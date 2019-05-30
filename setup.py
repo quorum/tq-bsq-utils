@@ -8,6 +8,6 @@ setuptools.setup(
     author_email="apanosa@yahoo.com",
     description="Utilities to parse and generate BSQ raster cubes",
     long_description=open("README.md").read(),
-    packages=setuptools.find_packages(exclude="test.*"),
+    packages=["tq", "tq.hdr"],
     install_requires=["numpy"],
 )

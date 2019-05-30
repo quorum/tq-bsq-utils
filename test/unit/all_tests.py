@@ -1,9 +1,9 @@
 import unittest
-from test.unit.tq.hdr.hdr_writer_tests import HdrWriterTests
-from test.unit.tq.hdr.hdr_line_writer_tests import HdrLineWriterTests
-from test.unit.tq.hdr.hdr_builder_tests import HdrBuilderTests
-from test.unit.tq.hdr.esri_hdr_line_writer_tests import EsriHdrLineWriterTests
-from test.unit.tq.hdr.envi_hdr_line_writer_tests import EnviHdrLineWriterTests
+from test.unit.hdr.hdr_writer_tests import HdrWriterTests
+from test.unit.hdr.hdr_line_writer_tests import HdrLineWriterTests
+from test.unit.hdr.hdr_builder_tests import HdrBuilderTests
+from test.unit.hdr.esri_hdr_line_writer_tests import EsriHdrLineWriterTests
+from test.unit.hdr.envi_hdr_line_writer_tests import EnviHdrLineWriterTests
 
 class AllTestsSuite(unittest.TestSuite):
   def suite(self):

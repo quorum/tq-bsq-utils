@@ -7,16 +7,22 @@ Utilities to parse and generate BSQ raster cubes.
 Add this module to your requirements.txt file.
 
 ```
--e 
+-e git+ssh://git@github.com/quorum/tq-bsq-utils.git#egg=bsq_utils
 ```
 
 Alternatively you can use pip to install it:
 
 ```
-$ pip install -e 
+$ pip install -e git+ssh://git@github.com/quorum/tq-bsq-utils.git#egg=bsq_utils
 ```
 
 ## How to test
+
+First you will have to install all requirements by running (in the root folder of the project):
+
+```
+$ pip install -r requirements.txt
+```
 
 Run all unit tests by running the following command:
 

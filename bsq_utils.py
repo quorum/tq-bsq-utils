@@ -1,7 +1,7 @@
 import numpy as np
 import re
 
-from tq.hdr.hdr_builder import HdrBuilder
+from hdr.hdr_builder import HdrBuilder
 
 def parse_hdr_line(line):
     """Parses a line from an HDR file."""

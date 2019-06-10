@@ -2,7 +2,7 @@ import unittest
 
 from mock import Mock
 
-from tq.hdr.envi_hdr_line_writer import EnviHdrLineWriter
+from hdr.envi_hdr_line_writer import EnviHdrLineWriter
 
 class EnviHdrLineWriterTests(unittest.TestCase):
     def test_write_with_key(self):

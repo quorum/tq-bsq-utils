@@ -2,7 +2,7 @@ import unittest
 
 from mock import Mock
 
-from tq.hdr.esri_hdr_line_writer import EsriHdrLineWriter
+from hdr.esri_hdr_line_writer import EsriHdrLineWriter
 
 class EsriHdrLineWriterTests(unittest.TestCase):
     def test_write_with_key(self):

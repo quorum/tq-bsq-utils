@@ -1,5 +1,5 @@
 """EsriHdrBuilder class"""
-from tq.hdr.hdr_builder import HdrBuilder
+from hdr.hdr_builder import HdrBuilder
 
 class EsriHdrBuilder(HdrBuilder):
   """A class for building HDRs in ESRI format."""

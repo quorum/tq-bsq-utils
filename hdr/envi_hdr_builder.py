@@ -1,5 +1,5 @@
 """EnviHdrBuilder class"""
-from tq.hdr.hdr_builder import HdrBuilder
+from hdr.hdr_builder import HdrBuilder
 
 class EnviHdrBuilder(HdrBuilder):
   """A class for building HDRs in ENVI format."""

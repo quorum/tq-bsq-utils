@@ -2,7 +2,7 @@ import unittest
 
 from mock import Mock, mock_open, patch
 
-from tq.hdr.hdr_writer import HdrWriter
+from hdr.hdr_writer import HdrWriter
 
 class HdrWriterTests(unittest.TestCase):
     def test_write(self):

@@ -1,7 +1,7 @@
 """EsriHdrWriter class"""
-from tq.hdr.hdr_writer import HdrWriter
-from tq.hdr.esri_hdr_line_writer import EsriHdrLineWriter
-from tq.hdr.esri_hdr_builder import EsriHdrBuilder
+from hdr.hdr_writer import HdrWriter
+from hdr.esri_hdr_line_writer import EsriHdrLineWriter
+from hdr.esri_hdr_builder import EsriHdrBuilder
 
 class EsriHdrWriter(HdrWriter):
   """A class that writes HDR files in ESRI format."""

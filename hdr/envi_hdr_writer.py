@@ -1,7 +1,7 @@
 """EnviHdrWriter class"""
-from tq.hdr.hdr_writer import HdrWriter
-from tq.hdr.envi_hdr_line_writer import EnviHdrLineWriter
-from tq.hdr.envi_hdr_builder import EnviHdrBuilder
+from hdr.hdr_writer import HdrWriter
+from hdr.envi_hdr_line_writer import EnviHdrLineWriter
+from hdr.envi_hdr_builder import EnviHdrBuilder
 
 class EnviHdrWriter(HdrWriter):
   """A class that writes HDR files in ENVI format."""

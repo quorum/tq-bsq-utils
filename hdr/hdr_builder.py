@@ -24,13 +24,14 @@ class HdrBuilder(object):
   # Custom attributes
   HDR_WAVE_LENGTH = "wavelength"
   HDR_GEO_POINTS = "geo points"
+  HDR_MAP_INFO = "map info"
 
   # Available layouts
   HDR_LAYOUT_BIL = "bil"
   HDR_LAYOUT_BIP = "bip"
   HDR_LAYOUT_BSQ = "bsq"
 
-  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths, geo_points = []):
+  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths, geo_points = [], map_info = None):
     self.cols = cols
     self.rows = rows
     self.bands = bands
@@ -39,6 +40,7 @@ class HdrBuilder(object):
     self.layout = layout
     self.wave_lengths = wave_lengths
     self.geo_points = geo_points
+    self.map_info = map_info
 
   def build(self):
     """Builds an object with all the attributes according to the appropriate HDR format."""
@@ -51,12 +53,15 @@ class HdrBuilder(object):
         self.HDR_LAYOUT: self.layout,
         self.HDR_WAVE_LENGTH: self.wave_lengths_to_str(self.wave_lengths),
         self.HDR_GEO_POINTS: self.geo_points_to_str(self.geo_points),
+        self.HDR_MAP_INFO: self.map_info_to_str(self.map_info),
     }
 
   def wave_lengths_to_str(self, wave_lengths):
     """Creates a proper HDR string representation for wave lengths."""
     res = "{ "
     i = 0
+    if not wave_lengths:
+      wave_lengths = []
     for wave_length in wave_lengths:
         if i > 0 : res = res + ", "
         res = res + str(wave_length)
@@ -68,9 +73,24 @@ class HdrBuilder(object):
     """Creates a proper HDR string representation for geo points."""
     res = "{ "
     i = 0
+    if not geo_points:
+      geo_points = []
     for geo_point in geo_points:
         if i > 0 : res = res + ", "
         res = res + str(geo_point[0]) + ", " + str(geo_point[1]) + ", " + str(geo_point[2]) + ", " + str(geo_point[3])
+        i = i + 1
+    res = res + " }"
+    return res
+
+  def map_info_to_str(self, map_info):
+    """Creates a proper HDR string representation for map info."""
+    res = "{ "
+    i = 0
+    if not map_info:
+      map_info = []
+    for elem in map_info:
+        if i > 0 : res = res + ", "
+        res = res + str(elem)
         i = i + 1
     res = res + " }"
     return res

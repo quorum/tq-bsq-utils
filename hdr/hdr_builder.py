@@ -30,7 +30,7 @@ class HdrBuilder(object):
   HDR_LAYOUT_BIP = "bip"
   HDR_LAYOUT_BSQ = "bsq"
 
-  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths, geo_points = None):
+  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths, geo_points = []):
     self.cols = cols
     self.rows = rows
     self.bands = bands

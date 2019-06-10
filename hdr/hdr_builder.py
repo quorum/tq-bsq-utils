@@ -23,13 +23,14 @@ class HdrBuilder(object):
 
   # Custom attributes
   HDR_WAVE_LENGTH = "wavelength"
+  HDR_GEO_POINTS = "geo points"
 
   # Available layouts
   HDR_LAYOUT_BIL = "bil"
   HDR_LAYOUT_BIP = "bip"
   HDR_LAYOUT_BSQ = "bsq"
 
-  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths):
+  def __init__(self, cols, rows, bands, pixel_type, byte_order, layout, wave_lengths, geo_points):
     self.cols = cols
     self.rows = rows
     self.bands = bands
@@ -37,6 +38,7 @@ class HdrBuilder(object):
     self.byte_order = byte_order
     self.layout = layout
     self.wave_lengths = wave_lengths
+    self.geo_points = geo_points
 
   def build(self):
     """Builds an object with all the attributes according to the appropriate HDR format."""
@@ -48,6 +50,7 @@ class HdrBuilder(object):
         self.HDR_BYTE_ORDER: self.byte_order,
         self.HDR_LAYOUT: self.layout,
         self.HDR_WAVE_LENGTH: self.wave_lengths_to_str(self.wave_lengths),
+        self.HDR_GEO_POINTS: self.geo_points_to_str(self.geo_points),
     }
 
   def wave_lengths_to_str(self, wave_lengths):
@@ -57,6 +60,17 @@ class HdrBuilder(object):
     for wave_length in wave_lengths:
         if i > 0 : res = res + ", "
         res = res + str(wave_length)
+        i = i + 1
+    res = res + " }"
+    return res
+
+  def geo_points_to_str(self, geo_points):
+    """Creates a proper HDR string representation for geo points."""
+    res = "{ "
+    i = 0
+    for geo_point in geo_points:
+        if i > 0 : res = res + ", "
+        res = res + str(geo_point[0]) + ", " + str(geo_point[1]) + ", " + str(geo_point[2]) + ", " + str(geo_point[3])
         i = i + 1
     res = res + " }"
     return res

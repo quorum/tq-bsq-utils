@@ -2,12 +2,19 @@ import unittest
 
 from mock import Mock
 
-from tq.hdr.hdr_builder import HdrBuilder
+from hdr.hdr_builder import HdrBuilder
 
 class HdrBuilderTests(unittest.TestCase):
+    geo_points = [
+        (1.0, 1.0, 0.0, 0.0),
+        (100.0, 1.0, 0.0, 0.34),
+        (1.0, 100.0, 0.34, 0.0),
+        (100.0, 100.0, 0.34, 0.34),
+    ]
+    wave_lengths = [ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 ]
+
     def test_build(self):
-        wave_lengths = [ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 ]
-        hdr_builder = HdrBuilder(1, 2, 3, 4, 5, 6, wave_lengths)
+        hdr_builder = HdrBuilder(1, 2, 3, 4, 5, 6, self.wave_lengths, self.geo_points)
         self.assertEquals(hdr_builder.build(),{
             hdr_builder.HDR_COLS: 1,
             hdr_builder.HDR_ROWS: 2,
@@ -15,10 +22,14 @@ class HdrBuilderTests(unittest.TestCase):
             hdr_builder.HDR_PIXEL_TYPE: 4,
             hdr_builder.HDR_BYTE_ORDER: 5,
             hdr_builder.HDR_LAYOUT: 6,
-            hdr_builder.HDR_WAVE_LENGTH: hdr_builder.wave_lengths_to_str(wave_lengths),
+            hdr_builder.HDR_WAVE_LENGTH: hdr_builder.wave_lengths_to_str(self.wave_lengths),
+            hdr_builder.HDR_GEO_POINTS: hdr_builder.geo_points_to_str(self.geo_points),
         })
 
     def test_wave_lengths_to_str(self):
-        hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, 0)
-        wave_lengths = [ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 ]
-        self.assertEquals(hdr_builder.wave_lengths_to_str(wave_lengths), "{ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 }")
+        hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points)
+        self.assertEquals(hdr_builder.wave_lengths_to_str(self.wave_lengths), "{ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 }")
+
+    def test_geo_points_to_str(self):
+        hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points)
+        self.assertEquals(hdr_builder.geo_points_to_str(self.geo_points), "{ 1.0, 1.0, 0.0, 0.0, 100.0, 1.0, 0.0, 0.34, 1.0, 100.0, 0.34, 0.0, 100.0, 100.0, 0.34, 0.34 }")

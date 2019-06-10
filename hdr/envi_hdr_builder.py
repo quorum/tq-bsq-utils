@@ -22,6 +22,7 @@ class EnviHdrBuilder(HdrBuilder):
 
   # Custom attributes
   HDR_WAVE_LENGTH = "wavelength"
+  HDR_GEO_POINTS = "geo points"
 
   # Available layouts
   HDR_LAYOUT_BIL = "bil"

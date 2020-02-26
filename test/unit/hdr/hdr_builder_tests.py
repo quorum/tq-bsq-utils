@@ -16,7 +16,7 @@ class HdrBuilderTests(unittest.TestCase):
 
     def test_build(self):
         hdr_builder = HdrBuilder(1, 2, 3, 4, 5, 6, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.build(),{
+        self.assertEqual(hdr_builder.build(),{
             hdr_builder.HDR_COLS: 1,
             hdr_builder.HDR_ROWS: 2,
             hdr_builder.HDR_BANDS: 3,
@@ -30,25 +30,25 @@ class HdrBuilderTests(unittest.TestCase):
 
     def test_wave_lengths_to_str_empty(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.wave_lengths_to_str(None), "{  }")
+        self.assertEqual(hdr_builder.wave_lengths_to_str(None), "{  }")
 
     def test_wave_lengths_to_str(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.wave_lengths_to_str(self.wave_lengths), "{ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 }")
+        self.assertEqual(hdr_builder.wave_lengths_to_str(self.wave_lengths), "{ 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 }")
 
     def test_geo_points_to_str_empty(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.geo_points_to_str(None), "{  }")
+        self.assertEqual(hdr_builder.geo_points_to_str(None), "{  }")
 
     def test_geo_points_to_str(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.geo_points_to_str(self.geo_points), "{ 1.0, 1.0, 0.0, 0.0, 100.0, 1.0, 0.0, 0.34, 1.0, 100.0, 0.34, 0.0, 100.0, 100.0, 0.34, 0.34 }")
+        self.assertEqual(hdr_builder.geo_points_to_str(self.geo_points), "{ 1.0, 1.0, 0.0, 0.0, 100.0, 1.0, 0.0, 0.34, 1.0, 100.0, 0.34, 0.0, 100.0, 100.0, 0.34, 0.34 }")
 
     def test_map_info_to_str_empty(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.map_info_to_str(None), "{  }")
+        self.assertEqual(hdr_builder.map_info_to_str(None), "{  }")
 
     def test_map_info_to_str(self):
         hdr_builder = HdrBuilder(0, 0, 0, 0, 0, 0, self.wave_lengths, self.geo_points, self.map_info)
-        self.assertEquals(hdr_builder.map_info_to_str(self.map_info), "{ UTM, 1.0, 1.0, 503920.0, 5056650.0, 0.1, 0.1, 12, North, WGS-84, units meters }")
+        self.assertEqual(hdr_builder.map_info_to_str(self.map_info), "{ UTM, 1.0, 1.0, 503920.0, 5056650.0, 0.1, 0.1, 12, North, WGS-84, units meters }")
         

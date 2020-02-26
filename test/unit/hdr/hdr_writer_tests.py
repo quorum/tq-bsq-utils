@@ -15,7 +15,7 @@ class HdrWriterTests(unittest.TestCase):
         hdr_builder = Mock()
         hdr_builder.build = Mock(return_value={key: value})
         hdr_writer = HdrWriter(line_writer, hdr_builder)
-        with patch("__builtin__.open", m, create=True):
+        with patch("builtins.open", m, create=True):
             hdr_writer.write(filename)
             hdr_builder.build.assert_called_once()
             m.assert_called_once_with(filename, "w")

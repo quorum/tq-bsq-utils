@@ -11,5 +11,5 @@ class HdrWriter(object):
     """Writes an HDR file using the specific line_writer and hdr_builder."""
     hdr = self.hdr_builder.build()
     with open(filename, "w") as f:
-        for key, value in hdr.iteritems():
+        for key, value in hdr.items():
             self.line_writer.write(f, key, value)

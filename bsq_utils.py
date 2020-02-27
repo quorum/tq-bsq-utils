@@ -16,6 +16,10 @@ def read_hdr(filename):
     hdr = {}
     with open(filename, "rb") as f:
         for line in f:
+            try:
+                line = line.decode("utf-8")
+            except (UnicodeDecodeError, AttributeError):
+                pass
             key, value = parse_hdr_line(line)
             if key:
                 if key == HdrBuilder.HDR_WAVE_LENGTH:

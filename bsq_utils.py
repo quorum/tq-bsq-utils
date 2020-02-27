@@ -39,7 +39,7 @@ def get_dtype(data_type):
 def parse_wave_lengths(wave_length):
     """Returns the proper wave lengths."""
     m = re.search('{(.+)}', wave_length)
-    return m.group(1).split(', ')
+    return m.group(1).strip().split(', ')
 
 def get_wave_length_index(wave_lengths, wave_length, default):
     """Gets the wave length."""

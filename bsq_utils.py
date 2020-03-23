@@ -7,7 +7,7 @@ def parse_hdr_line(line):
     """Parses a line from an HDR file."""
     m = re.search('([\w ]+) = (.*)', line)
     if (m):
-        return m.group(1), m.group(2)
+        return m.group(1).strip(), m.group(2).strip()
     else:
         return None, None
 

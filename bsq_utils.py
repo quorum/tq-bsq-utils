@@ -56,6 +56,12 @@ def read_bsq(filename, num_samples, num_lines, num_bands, data_type):
     img = np.fromfile(filename, dtype=data_type)
     return img.reshape((num_bands, num_lines, num_samples))
 
+def read_bil_from_buf(buf, num_samples, num_lines, num_bands, data_type):
+    """Reads a bil from a buffer given the number of samples (columns),
+    lines, bands and data type."""
+    img = np.frombuffer(buf, dtype=data_type)
+    return img.reshape((num_lines, num_bands, num_samples))
+
 def read_bil(filename, num_samples, num_lines, num_bands, data_type):
     """Reads a bil file given the number of samples (columns),
     lines, bands and data type."""

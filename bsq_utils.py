@@ -6,7 +6,7 @@ from hdr.hdr_builder import HdrBuilder
 def parse_hdr_line(line):
     """Parses a line from an HDR file."""
     m = re.search('([\w ]+) = (.*)', line)
-    if (m):
+    if m:
         return m.group(1).strip(), m.group(2).strip()
     else:
         return None, None

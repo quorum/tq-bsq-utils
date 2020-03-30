@@ -8,5 +8,5 @@ class HdrLineWriter(object):
   
   def write(self, f, key, value):
     """Writes a line in a particular file using the pattern provided."""
-    if (key):
+    if key:
       f.write(self.pattern.format(key, value))

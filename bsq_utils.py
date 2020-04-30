@@ -106,11 +106,16 @@ def bil2bip(bil):
     """Converts a bil to bip."""
     return np.moveaxis(bil, 1, 2)
 
+def arr_multiply(arr, scalar):
+    with np.nditer(arr, flags=['external_loop', 'buffered'], op_flags=['readwrite']) as it:
+        for x in it:
+            x[...] = x * scalar
+
 def normalize(bip):
     """Normalizes all pixels according to its max value."""
     max_value = np.amax(bip)
     factor = float(2**(bip.dtype.itemsize * 8) - 1) / float(max_value)
-    res = np.multiply(bip, factor)
+    arr_multiply(bip, factor)
     return res.astype(bip.dtype)
 
 def calc_histogram_variance(bsq):

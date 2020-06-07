@@ -57,7 +57,7 @@ def read_bsq(filename, num_samples, num_lines, num_bands, data_type):
     return img.reshape((num_bands, num_lines, num_samples))
 
 def read_bil_from_buf(buf, num_samples, num_lines, num_bands, data_type):
-    """Reads a bil from a buffer given the number of samples (columns),
+    """Reads a bil from a buffer given https://github.com/terraqube/tq-bsq-utils.gitthe number of samples (columns),
     lines, bands and data type."""
     img = np.frombuffer(buf, dtype=data_type)
     return img.reshape((num_lines, num_bands, num_samples))
@@ -115,7 +115,7 @@ def normalize(bip):
     """Normalizes all pixels according to its max value."""
     max_value = np.amax(bip)
     factor = float(2**(bip.dtype.itemsize * 8) - 1) / float(max_value)
-    arr_multiply(bip, factor)
+    res = np.multiply(bip, factor)
     return res.astype(bip.dtype)
 
 def calc_histogram_variance(bsq):
